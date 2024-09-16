@@ -29,10 +29,9 @@ router.post("/signin", async (req, res) => {
 
 // PUT
 router.put("/updateUser/:id", async (req, res) => {
-  const name = req.body.name;
-  console.log(name);
-  await updateUser(req.params["id"], name);
-  res.json({ update_records: name });
+  const change = req.body;
+  await updateUser(req.params["id"], change);
+  res.json({ update_records: change });
 });
 
 // DELETE
