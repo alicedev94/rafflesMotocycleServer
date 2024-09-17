@@ -32,7 +32,7 @@ class Ticket extends Model {
     return {
       sequelize,
       tableName: table_name,
-      modelName: "tickets",
+      modelName: "Tickets",
       timestamps: false,
     };
   }
