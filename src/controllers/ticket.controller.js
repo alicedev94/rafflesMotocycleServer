@@ -8,6 +8,12 @@ const findAll = async () => {
   return response;
 };
 
+const deleteTicket = async (id) => {
+  const response = instance.delete("Tickets", id);
+  return response;
+};
+
 module.exports = {
-    findAll
+  findAll,
+  deleteTicket,
 };

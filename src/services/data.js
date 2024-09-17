@@ -1,5 +1,3 @@
-const { where } = require("sequelize");
-
 class Main {
   constructor(models) {
     this.models = models;
@@ -25,7 +23,6 @@ class Main {
   }
 
   async delete (model, id) {
-    console.log("delete")
     const response = await this.models[model].destroy({
         where: {
             id: id
