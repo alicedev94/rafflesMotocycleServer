@@ -8,7 +8,6 @@ const findAll = async () => {
   return response;
 };
 
-
 module.exports = {
     findAll
 };

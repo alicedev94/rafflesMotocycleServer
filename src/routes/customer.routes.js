@@ -5,7 +5,13 @@ const {
   newCustomer,
   deleteCustomer,
   updateCustomer,
+  findCustomer,
 } = require("../controllers/customer.controller");
+
+router.get("/customers", async (req, res) => {
+  const rta = await findCustomer();
+  res.json(rta);
+});
 
 router.post("/newUser", async (req, res) => {
   await newCustomer(req.body);
@@ -22,3 +28,5 @@ router.delete("/deleteUser/:id", async (req, res) => {
   const rta = await deleteCustomer(req.params["id"]);
   res.json({ deleted_records: rta });
 });
+
+module.exports = router;

@@ -10,13 +10,13 @@ class Main {
     return resposne;
   }
 
-  new (model, data) {
-    const response = this.models[model].create(data);
+  async new (model, data) {
+    const response = await this.models[model].create(data);
     return response;
   }
   
-  update (model, id, data) {
-    const response = this.models[model].update(data, {
+  async update (model, id, data) {
+    const response = await this.models[model].update(data, {
         where: {
             id: id,
         }
@@ -24,8 +24,9 @@ class Main {
     return response;
   }
 
-  delete (model, id) {
-    const response = this.models[model].delete({
+  async delete (model, id) {
+    console.log("delete")
+    const response = await this.models[model].destroy({
         where: {
             id: id
         }

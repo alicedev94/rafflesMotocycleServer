@@ -3,6 +3,11 @@ const Data = require("../services/data");
 
 const instance = new Data(sequelize.models);
 
+const findCustomer = async (data) => {
+  const response = instance.get("Customers");
+  return response;
+};
+
 const newCustomer = async (data) => {
   const response = instance.new("Customers", data);
   return response;
@@ -18,10 +23,9 @@ const deleteCustomer = async (id) => {
   return response;
 };
 
-console.log('ss')
-
 module.exports = {
   newCustomer,
   deleteCustomer,
   updateCustomer,
+  findCustomer
 };
