@@ -9,24 +9,40 @@ const {
 } = require("../controllers/customer.controller");
 
 router.get("/customers", async (req, res) => {
-  const rta = await findCustomer();
-  res.json(rta);
+  try {
+    const rta = await findCustomer();
+    res.json(rta);
+  } catch (error) {
+    res.json(error);
+  }
 });
 
 router.post("/newUser", async (req, res) => {
-  await newCustomer(req.body);
-  res.json(req.body);
+  try {
+    await newCustomer(req.body);
+    res.json(req.body);
+  } catch (error) {
+    res.json(error);
+  }
 });
 
 router.put("/updateUser/:id", async (req, res) => {
-  const change = req.body;
-  await updateCustomer(req.params["id"], change);
-  res.json({ update_records: change });
+  try {
+    const change = req.body;
+    await updateCustomer(req.params["id"], change);
+    res.json({ update_records: change });
+  } catch (error) {
+    res.json(error);
+  }
 });
 
 router.delete("/deleteUser/:id", async (req, res) => {
-  const rta = await deleteCustomer(req.params["id"]);
-  res.json({ deleted_records: rta });
+  try {
+    const rta = await deleteCustomer(req.params["id"]);
+    res.json({ deleted_records: rta });
+  } catch (error) {
+    res.json(error);
+  }
 });
 
 module.exports = router;
