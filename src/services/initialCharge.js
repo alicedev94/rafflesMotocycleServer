@@ -9,7 +9,9 @@ const generateTickets = (amount) => {
     });
   }
 
+  console.log(tickets);
   return tickets;
 };
+
 
 module.exports = generateTickets;

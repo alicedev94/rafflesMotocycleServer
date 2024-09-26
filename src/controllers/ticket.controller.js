@@ -1,5 +1,6 @@
 const sequelize = require("../lib/sequelize");
 const Data = require("../services/data");
+const generateTickets = require("../services/initialCharge");
 
 const instance = new Data(sequelize.models);
 
@@ -8,10 +9,18 @@ const findAll = async () => {
   return response;
 };
 
+const initialCharge = async (model, data) => {
+  const response = instance.bulkCreate1(model, data);
+  return response;
+};
+
 const deleteTicket = async (id) => {
   const response = instance.delete("Tickets", id);
   return response;
 };
+
+// Test
+// initialCharge("Tickets", generateTickets(100));
 
 module.exports = {
   findAll,
