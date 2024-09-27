@@ -37,14 +37,13 @@ router.post("/new/customer", upload.single("image"), async (req, res) => {
   const form = { name, lastname, email, phone };
 
   // This to save image data
-  //  console.log(req.file)
   if (paymetReference && paymetReference.length  > 0) {
     const firstPaymetReference = paymetReference[0].paymentReference;
     form.paymentReference = firstPaymetReference;
   }
 
   try {
-    await newCustomerv2(form, paymetReference);
+    await newCustomerv2(form, paymetReference, req.file);
     res.status(200).json({ message: "Pago registrado" });
   } catch (error) {
     res.status(404).json(error.message);

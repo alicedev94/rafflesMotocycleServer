@@ -13,10 +13,15 @@ const newCustomer = async (data) => {
   return response;
 };
 
-const newCustomerv2 = async (form, paymetReference) => {
-  console.log("form", form)
+const newCustomerv2 = async (form, paymetReference, file) => {
   const response = instance.new("Customers", form);
   const responsev2 = instance.bulkCreate1("Services", paymetReference);
+  const newFile = {
+    name: file.originalname,
+    path: file.path,
+    paymentReference: form.paymentReference,
+  };
+  const responsev3 = instance.new("Paymet", newFile);
   return response;
 };
 
@@ -35,5 +40,5 @@ module.exports = {
   deleteCustomer,
   updateCustomer,
   findCustomer,
-  newCustomerv2
+  newCustomerv2,
 };
