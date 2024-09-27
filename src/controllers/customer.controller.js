@@ -13,6 +13,13 @@ const newCustomer = async (data) => {
   return response;
 };
 
+const newCustomerv2 = async (form, paymetReference) => {
+  console.log("form", form)
+  const response = instance.new("Customers", form);
+  const responsev2 = instance.bulkCreate1("Services", paymetReference);
+  return response;
+};
+
 const updateCustomer = async (id, data) => {
   const response = instance.update("Customers", id, data);
   return response;
@@ -27,5 +34,6 @@ module.exports = {
   newCustomer,
   deleteCustomer,
   updateCustomer,
-  findCustomer
+  findCustomer,
+  newCustomerv2
 };

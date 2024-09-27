@@ -1,11 +1,13 @@
 const { Router } = require("express");
 const router = Router();
+const multer = require("multer");
 
 const {
   newCustomer,
   deleteCustomer,
   updateCustomer,
   findCustomer,
+  newCustomerv2,
 } = require("../controllers/customer.controller");
 
 router.get("/customers", async (req, res) => {
@@ -14,6 +16,40 @@ router.get("/customers", async (req, res) => {
     res.json(rta);
   } catch (error) {
     res.json(error);
+  }
+});
+
+// Configuración de multer para manejar la subida de archivos
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, "uploads/");
+  },
+  filename: (req, file, cb) => {
+    cb(null, `${Date.now()}-${file.originalname}`);
+  },
+});
+
+const upload = multer({ storage: storage });
+
+router.post("/new/customer", upload.single("image"), async (req, res) => {
+  const { name, lastname, email, phone, reference } = req.body;
+  const paymetReference = JSON.parse(reference);
+  const form = { name, lastname, email, phone };
+
+  // This to save image data
+  //  console.log(req.file)
+  if (paymetReference && paymetReference.length  > 0) {
+    console.log("!")
+    const firstPaymetReference = paymetReference[0].paymentReference;
+    form.paymentReference = firstPaymetReference;
+  }
+
+  try {
+    console.log("!s")
+    await newCustomerv2(form, paymetReference);
+    res.status(200).json({ message: "Pago registrado" });
+  } catch (error) {
+    res.status(404).json(error.message);
   }
 });
 

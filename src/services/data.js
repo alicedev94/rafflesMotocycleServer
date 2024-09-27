@@ -14,7 +14,6 @@ class Main {
   }
 
   async bulkCreate1 (model, data) {
-    console.log("data", data)
     const response = await this.models[model].bulkCreate(data);
     return response;
   }
