@@ -5,10 +5,13 @@ const {
   findAll,
   deleteTicket
 } = require("../controllers/ticket.controller");
+
+const { findCustomer1 } = require("../controllers/customer.controller")
+
 const { id } = require("tedious/lib/data-types/null");
 
 router.get("/find/ticket", async (req, res) => {
-  const rta = await findAll();
+  const rta = await findCustomer1();
   res.json(rta);
 });
 

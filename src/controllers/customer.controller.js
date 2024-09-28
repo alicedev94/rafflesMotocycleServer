@@ -3,8 +3,13 @@ const Data = require("../services/data");
 
 const instance = new Data(sequelize.models);
 
-const findCustomer = async (data) => {
+const findCustomer = async () => {
   const response = instance.get("Customers");
+  return response;
+};
+
+const findCustomer1 = async () => {
+  const response = instance.getSqlV2(sequelize);
   return response;
 };
 
@@ -25,6 +30,11 @@ const newCustomerv2 = async (form, paymetReference, file) => {
   return response;
 };
 
+const examine = async (reference) => {
+  const response = instance.getSql(sequelize, reference);
+  return response;
+};
+
 const updateCustomer = async (id, data) => {
   const response = instance.update("Customers", id, data);
   return response;
@@ -40,5 +50,7 @@ module.exports = {
   deleteCustomer,
   updateCustomer,
   findCustomer,
+  findCustomer1,
   newCustomerv2,
+  examine
 };

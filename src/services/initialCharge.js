@@ -8,8 +8,6 @@ const generateTickets = (amount) => {
       statusT: i % 2 === 0 ? "active" : "inactive", 
     });
   }
-
-  console.log(tickets);
   return tickets;
 };
 

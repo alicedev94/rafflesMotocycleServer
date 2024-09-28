@@ -8,6 +8,7 @@ const {
   updateCustomer,
   findCustomer,
   newCustomerv2,
+  examine
 } = require("../controllers/customer.controller");
 
 router.get("/customers", async (req, res) => {
@@ -54,6 +55,17 @@ router.post("/newUser", async (req, res) => {
   try {
     await newCustomer(req.body);
     res.json(req.body);
+  } catch (error) {
+    res.json(error);
+  }
+});
+
+
+router.get("/examine/:reference", async (req, res) => {
+  try {
+    const { reference } = req.params;
+    const response = await examine(reference);
+    res.json(response);
   } catch (error) {
     res.json(error);
   }
