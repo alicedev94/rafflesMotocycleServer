@@ -8,7 +8,8 @@ const {
   updateCustomer,
   findCustomer,
   newCustomerv2,
-  examine
+  examine,
+  examineImg
 } = require("../controllers/customer.controller");
 
 router.get("/customers", async (req, res) => {
@@ -65,6 +66,16 @@ router.get("/examine/:reference", async (req, res) => {
   try {
     const { reference } = req.params;
     const response = await examine(reference);
+    res.json(response);
+  } catch (error) {
+    res.json(error);
+  }
+});
+
+router.get("/examineImg/:reference", async (req, res) => {
+  try {
+    const { reference } = req.params;
+    const response = await examineImg(reference);
     res.json(response);
   } catch (error) {
     res.json(error);

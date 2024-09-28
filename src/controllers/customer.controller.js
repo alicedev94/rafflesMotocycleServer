@@ -35,6 +35,11 @@ const examine = async (reference) => {
   return response;
 };
 
+const examineImg = async (reference) => {
+  const response = instance.getSqlv3(sequelize, reference);
+  return response;
+};
+
 const updateCustomer = async (id, data) => {
   const response = instance.update("Customers", id, data);
   return response;
@@ -52,5 +57,6 @@ module.exports = {
   findCustomer,
   findCustomer1,
   newCustomerv2,
-  examine
+  examine,
+  examineImg
 };

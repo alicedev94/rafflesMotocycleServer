@@ -54,6 +54,13 @@ class Main {
     return response[0];
   }
 
+  async getSqlv3(sequelize, reference) {
+    const response = await  sequelize.query(`
+    SELECT path FROM paymet WHERE paymentReference = '${reference}';
+          `);
+    return response[0];
+  }
+
   async new(model, data) {
     const response = await this.models[model].create(data);
     return response;
