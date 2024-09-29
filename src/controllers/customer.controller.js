@@ -14,20 +14,28 @@ const findCustomer1 = async () => {
 };
 
 const newCustomer = async (data) => {
+try {
   const response = instance.new("Customers", data);
   return response;
+} catch (error) {
+  return error;
+}
 };
 
 const newCustomerv2 = async (form, paymetReference, file) => {
-  const response = instance.new("Customers", form);
-  const responsev2 = instance.bulkCreate1("Services", paymetReference);
-  const newFile = {
-    name: file.originalname,
-    path: file.path,
-    paymentReference: form.paymentReference,
-  };
-  const responsev3 = instance.new("Paymet", newFile);
-  return response;
+  try {
+    const response = instance.new("Customers", form);
+    const responsev2 = instance.bulkCreate1("Services", paymetReference);
+    const newFile = {
+      name: file.originalname,
+      path: file.path,
+      paymentReference: form.paymentReference,
+    };
+    const responsev3 = instance.new("Paymet", newFile);
+    return response;
+  } catch (error) {
+    return error;
+  }
 };
 
 const examine = async (reference) => {

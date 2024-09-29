@@ -34,6 +34,9 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage });
 
 router.post("/new/customer", upload.single("image"), async (req, res) => {
+
+  // console.log(req.body)
+
   const { name, lastname, email, phone, reference } = req.body;
   const paymetReference = JSON.parse(reference);
   const form = { name, lastname, email, phone };

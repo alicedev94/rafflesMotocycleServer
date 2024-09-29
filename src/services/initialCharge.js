@@ -5,7 +5,7 @@ const generateTickets = (amount) => {
     tickets.push({
       userId: `user${i}`,
       value: i,
-      statusT: i % 2 === 0 ? "active" : "inactive", 
+      statusT: i % 2 === 0 ? "active" : "active", 
     });
   }
   return tickets;
