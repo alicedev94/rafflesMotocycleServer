@@ -5,7 +5,7 @@ require("dotenv").config();
 
 const sequelize = new Sequelize('test', 'root', '', {
   dialect: 'mysql',
-  logging: false,
+  // logging: false,
   dialectOptions: {
     // Tus opciones de mysql2 aquí
   },

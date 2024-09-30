@@ -48,6 +48,13 @@ const examineImg = async (reference) => {
   return response;
 };
 
+const examineDelete = async (reference) => {
+  const response = instance.deleteReference("Paymet", reference);
+  const response1 = instance.deleteReference("Customers", reference);
+  const response2 = instance.deleteReference("Services", reference);
+  return response;
+};
+
 const updateCustomer = async (id, data) => {
   const response = instance.update("Customers", id, data);
   return response;
@@ -66,5 +73,6 @@ module.exports = {
   findCustomer1,
   newCustomerv2,
   examine,
-  examineImg
+  examineImg,
+  examineDelete
 };

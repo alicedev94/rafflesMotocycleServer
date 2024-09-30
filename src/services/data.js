@@ -9,7 +9,7 @@ class Main {
   }
 
   async getSql(sequelize, reference) {
-    const response = await  sequelize.query(`
+    const response = await sequelize.query(`
         SELECT 
             c.paymentReference AS 'idDePago',
             c.name AS 'nombre',
@@ -37,7 +37,7 @@ class Main {
   }
 
   async getSqlV2(sequelize) {
-    const response = await  sequelize.query(`
+    const response = await sequelize.query(`
       SELECT 
           t.value,
           CASE 
@@ -55,7 +55,7 @@ class Main {
   }
 
   async getSqlv3(sequelize, reference) {
-    const response = await  sequelize.query(`
+    const response = await sequelize.query(`
     SELECT path FROM paymet WHERE paymentReference = '${reference}';
           `);
     return response[0];
@@ -88,6 +88,27 @@ class Main {
     });
     return response;
   }
+
+  async deleteReference(model, reference) {
+    const response = await this.models[model].destroy({
+      where: {
+        paymentReference: reference,
+      },
+    });
+    return response;
+  }
+  
+  async deleteSql(sequelize, reference) {
+    console.log("d")
+    const response = await sequelize.query(`'
+      DELETE FROM customers WHERE paymentReference = '${reference}';
+      COMMIT
+      `
+    );
+    return response;
+  }
+
+
 }
 
 module.exports = Main;
