@@ -116,4 +116,13 @@ router.delete("/deleteUser/:id", async (req, res) => {
   }
 });
 
+// Test
+router.get("/lol", async (req, res) => {
+  try {
+    res.send("Power by alice :3 in Cpanel..!");
+  } catch (error) {
+    res.send(error);
+  }
+});
+
 module.exports = router;
