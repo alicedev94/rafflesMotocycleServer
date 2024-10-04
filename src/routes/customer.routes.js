@@ -119,7 +119,7 @@ router.delete("/deleteUser/:id", async (req, res) => {
 // Test
 router.get("/lol", async (req, res) => {
   try {
-    res.send("Power by alice :3 in Cpanel..!");
+    res.send("Power by alice :3 in DONWEB..!");
   } catch (error) {
     res.send(error);
   }
