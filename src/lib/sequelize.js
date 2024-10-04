@@ -4,13 +4,14 @@ const setupModels = require("../models/index");
 require("dotenv").config();
 
 const sequelize = new Sequelize('test', 'root', '', {
+  host: '205.209.113.202', // IP de tu servidor MySQL
   dialect: 'mysql',
+  port: 3306, // Puerto por defecto de MySQL
   logging: false,
   dialectOptions: {
     // Tus opciones de mysql2 aquí
   },
 });
-
 setupModels(sequelize);
 // sequelize.sync();
 
