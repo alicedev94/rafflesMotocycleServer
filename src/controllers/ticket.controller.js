@@ -20,7 +20,7 @@ const deleteTicket = async (id) => {
 };
 
 // Test
-// initialCharge("Tickets", generateTickets(50));
+initialCharge("Tickets", generateTickets(150));
 
 module.exports = {
   findAll,
