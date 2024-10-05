@@ -10,7 +10,8 @@ const {
   newCustomerv2,
   examine,
   examineImg,
-  examineDelete
+  examineDelete,
+  getTickets
 } = require("../controllers/customer.controller");
 
 router.get("/customers", async (req, res) => {
@@ -87,7 +88,6 @@ router.get("/examineImg/:reference", async (req, res) => {
 });
 
 router.delete("/examine/delete/:reference", async (req, res) => {
-  console.log("s")
   try {
     const { reference } = req.params;
     const response = await examineDelete(reference);
@@ -117,6 +117,15 @@ router.delete("/deleteUser/:id", async (req, res) => {
 });
 
 // Test
+router.get("/", async (req, res) => {
+  try {
+    const response = await getTickets();
+    res.json(response);
+  } catch (error) {
+    res.json(error.message);
+  }
+});
+
 router.get("/lol", async (req, res) => {
   try {
     res.send("Power by alice :3 in DONWEB..!");

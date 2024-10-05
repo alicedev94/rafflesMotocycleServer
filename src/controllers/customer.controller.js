@@ -65,6 +65,13 @@ const deleteCustomer = async (id) => {
   return response;
 };
 
+const getTickets = async () => {
+  const response = instance.get("Tickets");
+  return response;
+};
+
+
+
 module.exports = {
   newCustomer,
   deleteCustomer,
@@ -74,5 +81,6 @@ module.exports = {
   newCustomerv2,
   examine,
   examineImg,
-  examineDelete
+  examineDelete,
+  getTickets
 };
