@@ -13,6 +13,6 @@ const sequelize = new Sequelize('rifaslav_test', 'rifaslav_rifa', 'a%AET[0v55u-'
   },
 });
 setupModels(sequelize);
-// sequelize.sync();
+sequelize.sync();
 
 module.exports = sequelize;
