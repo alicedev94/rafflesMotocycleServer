@@ -7,8 +7,8 @@ const cors = require("cors");
 const path = require('path');
 const https = require("https");
 
-const port = 3001;
-const port2 = 3002;
+const port = 3002;
+const port2 = 3001;
 
 const fs = require("fs");
 var options = {
