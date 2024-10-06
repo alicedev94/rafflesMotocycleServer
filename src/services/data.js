@@ -47,7 +47,7 @@ class Main {
       FROM 
           tickets t
       LEFT JOIN 
-          services s ON t.value = s.idTicket
+          Services s ON t.value = s.idTicket
           ORDER BY 
     t.value ASC;
           `);
