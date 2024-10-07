@@ -17,14 +17,14 @@ class Main {
             s.Cantidad_De_Tickets AS 'cantidadDeTickets',
             c.created_at AS 'fechaDeCreacion'
         FROM 
-            customers c
+            Customers c
         LEFT JOIN (
             SELECT 
                 paymentReference,
                 GROUP_CONCAT(idTicket) AS Todos_Los_Tickets,
                 COUNT(idTicket) AS Cantidad_De_Tickets
             FROM 
-                services
+                Services
             WHERE 
                 paymentReference = '${reference}'
             GROUP BY 
@@ -56,7 +56,7 @@ class Main {
 
   async getSqlv3(sequelize, reference) {
     const response = await sequelize.query(`
-    SELECT path FROM paymet WHERE paymentReference = '${reference}';
+    SELECT path FROM Paymet WHERE paymentReference = '${reference}';
           `);
     return response[0];
   }
@@ -101,7 +101,7 @@ class Main {
   async deleteSql(sequelize, reference) {
     console.log("d")
     const response = await sequelize.query(`'
-      DELETE FROM customers WHERE paymentReference = '${reference}';
+      DELETE FROM Customers WHERE paymentReference = '${reference}';
       COMMIT
       `
     );
