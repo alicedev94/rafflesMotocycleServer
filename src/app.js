@@ -27,7 +27,7 @@ app.use("/api/v1", tickletRoutes);
 app.use('/uploads', express.static(path.join(__dirname, '../uploads')));
 
 app.listen(port3, () => {
-  console.log(`run on port ${port}`);
+  console.log(`run on port ${port3}`);
 });
 
 // https.createServer(options, app).listen(port2, () => { console.log("running https in: " + port2);});
