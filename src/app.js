@@ -9,6 +9,7 @@ const https = require("https");
 
 const port = 3002;
 const port2 = 3001;
+const port3 = 3000
 
 const fs = require("fs");
 var options = {
@@ -25,8 +26,8 @@ app.use("/api/v1", tickletRoutes);
 
 app.use('/uploads', express.static(path.join(__dirname, '../uploads')));
 
-// app.listen(port, () => {
-//   console.log(`run on port ${port}`);
-// });
+app.listen(port3, () => {
+  console.log(`run on port ${port}`);
+});
 
-https.createServer(options, app).listen(port2, () => { console.log("running https in: " + port2);});
+// https.createServer(options, app).listen(port2, () => { console.log("running https in: " + port2);});
